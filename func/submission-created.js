@@ -69,7 +69,7 @@ exports.handler = async function (event, context) {
             },
             body: JSON.stringify({
                 embed: {
-                    title: "New appeal submitted!",
+                    title: "Ny Ban Appel er modtaget",
                     timestamp: new Date().toISOString(),
                     fields: embedFields
                 }
