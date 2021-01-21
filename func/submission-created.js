@@ -32,19 +32,19 @@ exports.handler = async function (event, context) {
         const userInfo = decodeJwt(payload.token);
         const embedFields = [
             {
-                name: "Submitter",
+                name: "Bruger:",
                 value: `<@${userInfo.id}> (${userInfo.username}#${userInfo.discriminator})`
             },
             {
-                name: "Why were you banned?",
+                name: "Hvorfor var du bannet?",
                 value: payload.banReason.slice(0, MAX_EMBED_FIELD_CHARS)
             },
             {
-                name: "Why do you feel you should be unbanned?",
+                name: "Hvorfor skal du unbannes?",
                 value: payload.appealText.slice(0, MAX_EMBED_FIELD_CHARS)
             },
             {
-                name: "What will you do to avoid being banned in the future?",
+                name: "Hvad vil du gøre for at undgå at blive bannet i fremtiden?",
                 value: payload.futureActions.slice(0, MAX_EMBED_FIELD_CHARS)
             }
         ];
@@ -57,7 +57,7 @@ exports.handler = async function (event, context) {
 
             embedFields.push({
                 name: "Actions",
-                value: `[Approve appeal and unban user](${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))})`
+                value: `[Godkend Appel og unban brugeren](${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))})`
             });
         }
 
